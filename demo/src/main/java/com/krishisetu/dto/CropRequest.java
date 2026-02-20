@@ -23,4 +23,9 @@ public class CropRequest {
     private String location;
 
     private String description;
+    private String imageUrl;
+    private String season;
+    private String region;
+    private Double avgMarketPrice;
+    private Double demandIndex;
 }

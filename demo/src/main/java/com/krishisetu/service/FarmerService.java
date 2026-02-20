@@ -34,6 +34,11 @@ public class FarmerService {
                 .price(request.getPrice())
                 .location(request.getLocation())
                 .description(request.getDescription())
+                .imageUrl(request.getImageUrl())
+                .season(request.getSeason())
+                .region(request.getRegion())
+                .avgMarketPrice(request.getAvgMarketPrice())
+                .demandIndex(request.getDemandIndex())
                 .available(true)
                 .build();
 

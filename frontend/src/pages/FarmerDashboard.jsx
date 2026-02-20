@@ -88,6 +88,23 @@ const FarmerDashboard = ({ user }) => {
                     )}
 
                     <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', margin: '3rem 0 1.5rem' }}>
+                        <TrendingUp className="text-secondary" />
+                        <h2 style={{ fontSize: '1.5rem' }}>Market Intelligence</h2>
+                    </div>
+
+                    {crops.length === 0 ? (
+                        <div className="card" style={{ textAlign: 'center', color: 'var(--muted-foreground)', padding: '2rem', border: '1px dashed var(--border)' }}>
+                            <p>Add your crops to see AI-powered market trends and price predictions.</p>
+                        </div>
+                    ) : (
+                        <div style={{ display: 'grid', gridTemplateColumns: 'minmax(0, 1fr) minmax(0, 1fr)', gap: '1.5rem' }}>
+                            {crops.slice(0, 2).map(crop => (
+                                <CropCard key={`insight-${crop.id}`} crop={crop} />
+                            ))}
+                        </div>
+                    )}
+
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', margin: '3rem 0 1.5rem' }}>
                         <TrendingUp className="text-primary" />
                         <h2 style={{ fontSize: '1.5rem' }}>Recent Offers</h2>
                     </div>

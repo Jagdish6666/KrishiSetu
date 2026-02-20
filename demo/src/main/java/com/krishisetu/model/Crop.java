@@ -24,6 +24,12 @@ public class Crop {
     @Column(nullable = false)
     private String name;
 
+    private String season;
+    private String region;
+    private String imageUrl;
+    private Double avgMarketPrice;
+    private Double demandIndex;
+
     @Column(nullable = false)
     private Double quantity; // in kg or quintals
 

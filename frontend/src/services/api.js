@@ -78,4 +78,11 @@ export const buyerService = {
     }
 };
 
+export const predictionService = {
+    getPrediction: async (cropId) => {
+        const response = await api.get(`/prediction/${cropId}`);
+        return response.data;
+    }
+};
+
 export default api;
