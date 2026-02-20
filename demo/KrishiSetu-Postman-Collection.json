@@ -1,0 +1,461 @@
+{
+  "info": {
+    "name": "KrishiSetu API",
+    "description": "Complete API collection for KrishiSetu Farmer Platform",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "http://localhost:8080",
+      "type": "string"
+    },
+    {
+      "key": "farmerToken",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "buyerToken",
+      "value": "",
+      "type": "string"
+    },
+    {
+      "key": "adminToken",
+      "value": "",
+      "type": "string"
+    }
+  ],
+  "item": [
+    {
+      "name": "Authentication",
+      "item": [
+        {
+          "name": "Register Farmer",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Ravi Kumar\",\n  \"email\": \"ravi@example.com\",\n  \"password\": \"password123\",\n  \"role\": \"FARMER\",\n  \"landSize\": 5.5,\n  \"annualIncome\": 200000,\n  \"state\": \"Punjab\",\n  \"district\": \"Ludhiana\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/register",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "auth", "register"]
+            }
+          }
+        },
+        {
+          "name": "Register Buyer",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Suresh Traders\",\n  \"email\": \"suresh@example.com\",\n  \"password\": \"password123\",\n  \"role\": \"BUYER\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/register",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "auth", "register"]
+            }
+          }
+        },
+        {
+          "name": "Register Admin",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Admin User\",\n  \"email\": \"admin@krishisetu.com\",\n  \"password\": \"admin123\",\n  \"role\": \"ADMIN\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/register",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "auth", "register"]
+            }
+          }
+        },
+        {
+          "name": "Login Farmer",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"ravi@example.com\",\n  \"password\": \"password123\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/login",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "auth", "login"]
+            }
+          }
+        },
+        {
+          "name": "Login Buyer",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"suresh@example.com\",\n  \"password\": \"password123\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/login",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "auth", "login"]
+            }
+          }
+        },
+        {
+          "name": "Login Admin",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"email\": \"admin@krishisetu.com\",\n  \"password\": \"admin123\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/auth/login",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "auth", "login"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Farmer",
+      "item": [
+        {
+          "name": "Add Crop",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{farmerToken}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Wheat\",\n  \"quantity\": 100,\n  \"price\": 2500,\n  \"location\": \"Ludhiana, Punjab\",\n  \"description\": \"Premium quality wheat\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/farmer/crop",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "farmer", "crop"]
+            }
+          }
+        },
+        {
+          "name": "Get My Crops",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{farmerToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/farmer/crops",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "farmer", "crops"]
+            }
+          }
+        },
+        {
+          "name": "Update Crop",
+          "request": {
+            "method": "PUT",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{farmerToken}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"Wheat\",\n  \"quantity\": 120,\n  \"price\": 2600,\n  \"location\": \"Ludhiana, Punjab\",\n  \"description\": \"Premium quality wheat - Updated stock\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/farmer/crop/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "farmer", "crop", "1"]
+            }
+          }
+        },
+        {
+          "name": "Delete Crop",
+          "request": {
+            "method": "DELETE",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{farmerToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/farmer/crop/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "farmer", "crop", "1"]
+            }
+          }
+        },
+        {
+          "name": "Get My Offers",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{farmerToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/farmer/offers",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "farmer", "offers"]
+            }
+          }
+        },
+        {
+          "name": "Check Scheme Eligibility",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{farmerToken}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"state\": \"Punjab\",\n  \"landSize\": 5.5,\n  \"annualIncome\": 200000,\n  \"cropType\": \"Wheat\"\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/farmer/check-eligibility",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "farmer", "check-eligibility"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Buyer",
+      "item": [
+        {
+          "name": "Get All Crops",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{buyerToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/buyer/crops",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "buyer", "crops"]
+            }
+          }
+        },
+        {
+          "name": "Filter Crops by Location",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{buyerToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/buyer/crops?location=Punjab",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "buyer", "crops"],
+              "query": [
+                {
+                  "key": "location",
+                  "value": "Punjab"
+                }
+              ]
+            }
+          }
+        },
+        {
+          "name": "Place Offer",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{buyerToken}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"cropId\": 1,\n  \"offerPrice\": 2700\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/buyer/offer",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "buyer", "offer"]
+            }
+          }
+        },
+        {
+          "name": "Get My Offers",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{buyerToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/buyer/offers",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "buyer", "offers"]
+            }
+          }
+        }
+      ]
+    },
+    {
+      "name": "Admin",
+      "item": [
+        {
+          "name": "Add Scheme",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/json"
+              },
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              }
+            ],
+            "body": {
+              "mode": "raw",
+              "raw": "{\n  \"name\": \"PM-KISAN\",\n  \"description\": \"Pradhan Mantri Kisan Samman Nidhi - Financial assistance to farmers\",\n  \"minIncome\": 0,\n  \"maxIncome\": 500000,\n  \"minLandSize\": 0,\n  \"maxLandSize\": 10\n}"
+            },
+            "url": {
+              "raw": "{{baseUrl}}/api/admin/scheme",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "admin", "scheme"]
+            }
+          }
+        },
+        {
+          "name": "Get All Schemes",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/admin/schemes",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "admin", "schemes"]
+            }
+          }
+        },
+        {
+          "name": "Get All Farmers",
+          "request": {
+            "method": "GET",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/admin/farmers",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "admin", "farmers"]
+            }
+          }
+        },
+        {
+          "name": "Approve Farmer",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Authorization",
+                "value": "Bearer {{adminToken}}"
+              }
+            ],
+            "url": {
+              "raw": "{{baseUrl}}/api/admin/approve-farmer/1",
+              "host": ["{{baseUrl}}"],
+              "path": ["api", "admin", "approve-farmer", "1"]
+            }
+          }
+        }
+      ]
+    }
+  ]
+}
