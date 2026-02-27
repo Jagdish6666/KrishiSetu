@@ -26,7 +26,7 @@ const Dashboard = () => {
             ) : (
                 <BuyerDashboard user={user} />
             )}
-        </>
+        </>//
     );
 };
 
